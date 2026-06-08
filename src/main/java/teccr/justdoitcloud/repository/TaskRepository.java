@@ -17,14 +17,13 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
      */
     List<Task> findByUserId(Long userId);
 
-
     @Query("""
     SELECT *
     FROM task
     WHERE user_id = :userId
       AND status = :status
-      AND due_time >= CURRENT_TIME
-    ORDER BY due_time ASC
+      AND deadline >= CURRENT_TIME
+    ORDER BY deadline ASC
     LIMIT 5
     """)
     List<Task> findTop5UpcomingByUserAndStatus(@Param("userId") Long userId,
