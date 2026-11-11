@@ -19,7 +19,7 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 
     @Query("""
     SELECT *
-    FROM task
+    FROM tasks
     WHERE user_id = :userId
       AND status = :status
       AND deadline >= CURRENT_TIME
